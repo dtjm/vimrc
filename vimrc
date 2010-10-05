@@ -8,6 +8,8 @@ set smartindent
 set autoindent
 set incsearch
 set showcmd
+set textwidth=80
+set wrapmargin=0
 
 set laststatus=2
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -27,10 +29,16 @@ endfunction
 autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
 
 " Use CSS syntax for LESS CSS files
-au BufRead,BufNewFile *.less setfiletype css
+au BufRead,BufNewFile *.less setfiletype less
 
 set tags=tags;/
 map <F4> :TlistToggle<cr>
 
 au! BufRead,BufNewFile *.json setfiletype json
 au! BufRead,BufNewFile *.ru   setfiletype ruby
+au! BufRead,BufNewFile *.plantuml setfiletype plantuml
+
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%>80v.\+/
+
+let javaScript_fold=1
