@@ -16,26 +16,22 @@ set laststatus=2
 set statusline=%F%m%r%h%w\ %{&ff}:%Y\ %v:%l/%L\ %{VCSCommandGetStatusLine()}
 "set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 
+filetype plugin indent on
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-filetype indent on
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
 
 colorscheme slate
-
-function! SetupEnvironment()
-    if &filetype == 'yaml'
-        setlocal tabstop=2 shiftwidth=2
-    endif
-endfunction
-autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
-
-" Use CSS syntax for LESS CSS files
-au BufRead,BufNewFile *.less setfiletype less
 
 set tags=tags;/
 map <F4> :TlistToggle<cr>
 
+" Use CSS syntax for LESS CSS files
+au! BufRead,BufNewFile *.less setfiletype less
+
 au! BufRead,BufNewFile *.json setfiletype json
 au! BufRead,BufNewFile *.ru   setfiletype ruby
+
 au! BufRead,BufNewFile *.plantuml setfiletype plantuml
 
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
