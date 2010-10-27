@@ -19,20 +19,15 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
 
-colorscheme slate
+colorscheme ir_black
 
 set tags=tags;/
 map <F4> :TlistToggle<cr>
 
-" Use CSS syntax for LESS CSS files
+" Autoset certain file types
 au! BufRead,BufNewFile *.less setfiletype less
-
 au! BufRead,BufNewFile *.json setfiletype json
 au! BufRead,BufNewFile *.ru   setfiletype ruby
-
 au! BufRead,BufNewFile *.plantuml setfiletype plantuml
 
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
-
-let javaScript_fold=1
+" let javaScript_fold=1
